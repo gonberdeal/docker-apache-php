@@ -8,6 +8,11 @@ docker build -t apache-php .
 docker run --name apache-php -d -p 8000:80 apache-php
 
 
+# Lanzar contenedor que despliegue un tar (en un futuro)
+
+docker run -e "SRCURL=http://example.org/app.tar" --name apache-php -d -p 8000:80 apache-php
+
+
 # Ver logs
 
 docker logs -f apache-php

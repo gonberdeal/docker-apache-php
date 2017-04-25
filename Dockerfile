@@ -10,4 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN ln -sf /proc/self/fd/1 /var/log/apache2/access.log && \
     ln -sf /proc/self/fd/1 /var/log/apache2/error.log
 
-ENTRYPOINT ["/usr/sbin/apachectl", "-e", "info", "-DFOREGROUND"]
+EXPOSE 80
+
+COPY docker-entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
